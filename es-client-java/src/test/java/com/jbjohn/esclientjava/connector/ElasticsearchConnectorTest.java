@@ -1,6 +1,8 @@
 package com.jbjohn.esclientjava.connector;
 
 import org.elasticsearch.client.Client;
+import org.elasticsearch.client.ElasticsearchClient;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,11 +22,13 @@ public class ElasticsearchConnectorTest {
     @Test
     public void create() throws Exception {
         client = elasticsearchConnector.create();
+        Assert.assertTrue(client instanceof ElasticsearchClient);
     }
 
     @Test
     public void destroy() throws Exception {
         elasticsearchConnector.destroy(client);
+        Assert.assertTrue(client == null);
     }
 
 }
